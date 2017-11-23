@@ -1,0 +1,584 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		642F28DF1E24CA4B009251C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F28DE1E24CA4B009251C9 /* main.m */; };
+		642F28E21E24CA4B009251C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F28E11E24CA4B009251C9 /* AppDelegate.m */; };
+		642F28E51E24CA4B009251C9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F28E41E24CA4B009251C9 /* ViewController.m */; };
+		642F28EA1E24CA4B009251C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642F28E91E24CA4B009251C9 /* Assets.xcassets */; };
+		642F28F81E24CA4B009251C9 /* UBTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F28F71E24CA4B009251C9 /* UBTrackerTests.m */; };
+		642F29031E24CA4B009251C9 /* UBTrackerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F29021E24CA4B009251C9 /* UBTrackerUITests.m */; };
+		642F29131E24CE96009251C9 /* automation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 642F29121E24CE96009251C9 /* automation.plist */; };
+		642F29251E24CEA0009251C9 /* TrackingCapabilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F29171E24CEA0009251C9 /* TrackingCapabilities.m */; };
+		642F29261E24CEA0009251C9 /* TrackingCodeMakerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F29191E24CEA0009251C9 /* TrackingCodeMakerFactory.m */; };
+		642F29271E24CEA0009251C9 /* TrackingCodeMakerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F291B1E24CEA0009251C9 /* TrackingCodeMakerPlugin.m */; };
+		642F29281E24CEA0009251C9 /* TrackingCodeMakerPythonPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F291D1E24CEA0009251C9 /* TrackingCodeMakerPythonPlugin.m */; };
+		642F29291E24CEA0009251C9 /* TrackingCodeMakerRubyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F291F1E24CEA0009251C9 /* TrackingCodeMakerRubyPlugin.m */; };
+		642F292A1E24CEA0009251C9 /* UIElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F29211E24CEA0009251C9 /* UIElement.m */; };
+		642F292B1E24CEA0009251C9 /* UserBehaviorTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 642F29231E24CEA0009251C9 /* UserBehaviorTracker.m */; };
+		BAFF90411FC6C2CE00233BFE /* UBNode.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF903E1FC6C2CE00233BFE /* UBNode.m */; };
+		BAFF90421FC6C2CE00233BFE /* UBViewHierarchyDumper.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF90401FC6C2CE00233BFE /* UBViewHierarchyDumper.m */; };
+		BAFF90441FC6C2DB00233BFE /* xcuitest.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAFF90431FC6C2DB00233BFE /* xcuitest.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		642F28F41E24CA4B009251C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 642F28D21E24CA4B009251C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 642F28D91E24CA4B009251C9;
+			remoteInfo = UBTracker;
+		};
+		642F28FF1E24CA4B009251C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 642F28D21E24CA4B009251C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 642F28D91E24CA4B009251C9;
+			remoteInfo = UBTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		642F28DA1E24CA4B009251C9 /* UBTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UBTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		642F28DE1E24CA4B009251C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		642F28E01E24CA4B009251C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		642F28E11E24CA4B009251C9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		642F28E31E24CA4B009251C9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		642F28E41E24CA4B009251C9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		642F28E91E24CA4B009251C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		642F28EE1E24CA4B009251C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		642F28F31E24CA4B009251C9 /* UBTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UBTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		642F28F71E24CA4B009251C9 /* UBTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBTrackerTests.m; sourceTree = "<group>"; };
+		642F28F91E24CA4B009251C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		642F28FE1E24CA4B009251C9 /* UBTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UBTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		642F29021E24CA4B009251C9 /* UBTrackerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBTrackerUITests.m; sourceTree = "<group>"; };
+		642F29041E24CA4B009251C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		642F29121E24CE96009251C9 /* automation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = automation.plist; sourceTree = "<group>"; };
+		642F29161E24CEA0009251C9 /* TrackingCapabilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingCapabilities.h; sourceTree = "<group>"; };
+		642F29171E24CEA0009251C9 /* TrackingCapabilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingCapabilities.m; sourceTree = "<group>"; };
+		642F29181E24CEA0009251C9 /* TrackingCodeMakerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingCodeMakerFactory.h; sourceTree = "<group>"; };
+		642F29191E24CEA0009251C9 /* TrackingCodeMakerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingCodeMakerFactory.m; sourceTree = "<group>"; };
+		642F291A1E24CEA0009251C9 /* TrackingCodeMakerPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingCodeMakerPlugin.h; sourceTree = "<group>"; };
+		642F291B1E24CEA0009251C9 /* TrackingCodeMakerPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingCodeMakerPlugin.m; sourceTree = "<group>"; };
+		642F291C1E24CEA0009251C9 /* TrackingCodeMakerPythonPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingCodeMakerPythonPlugin.h; sourceTree = "<group>"; };
+		642F291D1E24CEA0009251C9 /* TrackingCodeMakerPythonPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingCodeMakerPythonPlugin.m; sourceTree = "<group>"; };
+		642F291E1E24CEA0009251C9 /* TrackingCodeMakerRubyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingCodeMakerRubyPlugin.h; sourceTree = "<group>"; };
+		642F291F1E24CEA0009251C9 /* TrackingCodeMakerRubyPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingCodeMakerRubyPlugin.m; sourceTree = "<group>"; };
+		642F29201E24CEA0009251C9 /* UIElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIElement.h; sourceTree = "<group>"; };
+		642F29211E24CEA0009251C9 /* UIElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIElement.m; sourceTree = "<group>"; };
+		642F29221E24CEA0009251C9 /* UserBehaviorTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBehaviorTracker.h; sourceTree = "<group>"; };
+		642F29231E24CEA0009251C9 /* UserBehaviorTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBehaviorTracker.m; sourceTree = "<group>"; };
+		BAFF903D1FC6C2CE00233BFE /* UBNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBNode.h; sourceTree = "<group>"; };
+		BAFF903E1FC6C2CE00233BFE /* UBNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBNode.m; sourceTree = "<group>"; };
+		BAFF903F1FC6C2CE00233BFE /* UBViewHierarchyDumper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBViewHierarchyDumper.h; sourceTree = "<group>"; };
+		BAFF90401FC6C2CE00233BFE /* UBViewHierarchyDumper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBViewHierarchyDumper.m; sourceTree = "<group>"; };
+		BAFF90431FC6C2DB00233BFE /* xcuitest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = xcuitest.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		642F28D71E24CA4B009251C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		642F28F01E24CA4B009251C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		642F28FB1E24CA4B009251C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		642F28D11E24CA4B009251C9 = {
+			isa = PBXGroup;
+			children = (
+				642F28DC1E24CA4B009251C9 /* UBTracker */,
+				642F28F61E24CA4B009251C9 /* UBTrackerTests */,
+				642F29011E24CA4B009251C9 /* UBTrackerUITests */,
+				642F28DB1E24CA4B009251C9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		642F28DB1E24CA4B009251C9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				642F28DA1E24CA4B009251C9 /* UBTracker.app */,
+				642F28F31E24CA4B009251C9 /* UBTrackerTests.xctest */,
+				642F28FE1E24CA4B009251C9 /* UBTrackerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		642F28DC1E24CA4B009251C9 /* UBTracker */ = {
+			isa = PBXGroup;
+			children = (
+				642F29111E24CE80009251C9 /* Resource */,
+				642F29101E24CE73009251C9 /* Model */,
+				642F28E01E24CA4B009251C9 /* AppDelegate.h */,
+				642F28E11E24CA4B009251C9 /* AppDelegate.m */,
+				642F28E31E24CA4B009251C9 /* ViewController.h */,
+				642F28E41E24CA4B009251C9 /* ViewController.m */,
+				642F28E91E24CA4B009251C9 /* Assets.xcassets */,
+				642F28EE1E24CA4B009251C9 /* Info.plist */,
+				642F28DD1E24CA4B009251C9 /* Supporting Files */,
+			);
+			path = UBTracker;
+			sourceTree = "<group>";
+		};
+		642F28DD1E24CA4B009251C9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				642F28DE1E24CA4B009251C9 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		642F28F61E24CA4B009251C9 /* UBTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				642F28F71E24CA4B009251C9 /* UBTrackerTests.m */,
+				642F28F91E24CA4B009251C9 /* Info.plist */,
+			);
+			path = UBTrackerTests;
+			sourceTree = "<group>";
+		};
+		642F29011E24CA4B009251C9 /* UBTrackerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				642F29021E24CA4B009251C9 /* UBTrackerUITests.m */,
+				642F29041E24CA4B009251C9 /* Info.plist */,
+			);
+			path = UBTrackerUITests;
+			sourceTree = "<group>";
+		};
+		642F29101E24CE73009251C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BAFF903D1FC6C2CE00233BFE /* UBNode.h */,
+				BAFF903E1FC6C2CE00233BFE /* UBNode.m */,
+				BAFF903F1FC6C2CE00233BFE /* UBViewHierarchyDumper.h */,
+				BAFF90401FC6C2CE00233BFE /* UBViewHierarchyDumper.m */,
+				642F29161E24CEA0009251C9 /* TrackingCapabilities.h */,
+				642F29171E24CEA0009251C9 /* TrackingCapabilities.m */,
+				642F29181E24CEA0009251C9 /* TrackingCodeMakerFactory.h */,
+				642F29191E24CEA0009251C9 /* TrackingCodeMakerFactory.m */,
+				642F291A1E24CEA0009251C9 /* TrackingCodeMakerPlugin.h */,
+				642F291B1E24CEA0009251C9 /* TrackingCodeMakerPlugin.m */,
+				642F291C1E24CEA0009251C9 /* TrackingCodeMakerPythonPlugin.h */,
+				642F291D1E24CEA0009251C9 /* TrackingCodeMakerPythonPlugin.m */,
+				642F291E1E24CEA0009251C9 /* TrackingCodeMakerRubyPlugin.h */,
+				642F291F1E24CEA0009251C9 /* TrackingCodeMakerRubyPlugin.m */,
+				642F29201E24CEA0009251C9 /* UIElement.h */,
+				642F29211E24CEA0009251C9 /* UIElement.m */,
+				642F29221E24CEA0009251C9 /* UserBehaviorTracker.h */,
+				642F29231E24CEA0009251C9 /* UserBehaviorTracker.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		642F29111E24CE80009251C9 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				642F29121E24CE96009251C9 /* automation.plist */,
+				BAFF90431FC6C2DB00233BFE /* xcuitest.plist */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		642F28D91E24CA4B009251C9 /* UBTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 642F29071E24CA4B009251C9 /* Build configuration list for PBXNativeTarget "UBTracker" */;
+			buildPhases = (
+				642F28D61E24CA4B009251C9 /* Sources */,
+				642F28D71E24CA4B009251C9 /* Frameworks */,
+				642F28D81E24CA4B009251C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UBTracker;
+			productName = UBTracker;
+			productReference = 642F28DA1E24CA4B009251C9 /* UBTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		642F28F21E24CA4B009251C9 /* UBTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 642F290A1E24CA4B009251C9 /* Build configuration list for PBXNativeTarget "UBTrackerTests" */;
+			buildPhases = (
+				642F28EF1E24CA4B009251C9 /* Sources */,
+				642F28F01E24CA4B009251C9 /* Frameworks */,
+				642F28F11E24CA4B009251C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				642F28F51E24CA4B009251C9 /* PBXTargetDependency */,
+			);
+			name = UBTrackerTests;
+			productName = UBTrackerTests;
+			productReference = 642F28F31E24CA4B009251C9 /* UBTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		642F28FD1E24CA4B009251C9 /* UBTrackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 642F290D1E24CA4B009251C9 /* Build configuration list for PBXNativeTarget "UBTrackerUITests" */;
+			buildPhases = (
+				642F28FA1E24CA4B009251C9 /* Sources */,
+				642F28FB1E24CA4B009251C9 /* Frameworks */,
+				642F28FC1E24CA4B009251C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				642F29001E24CA4B009251C9 /* PBXTargetDependency */,
+			);
+			name = UBTrackerUITests;
+			productName = UBTrackerUITests;
+			productReference = 642F28FE1E24CA4B009251C9 /* UBTrackerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		642F28D21E24CA4B009251C9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = lobster;
+				TargetAttributes = {
+					642F28D91E24CA4B009251C9 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					642F28F21E24CA4B009251C9 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 642F28D91E24CA4B009251C9;
+					};
+					642F28FD1E24CA4B009251C9 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 642F28D91E24CA4B009251C9;
+					};
+				};
+			};
+			buildConfigurationList = 642F28D51E24CA4B009251C9 /* Build configuration list for PBXProject "UBTracker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 642F28D11E24CA4B009251C9;
+			productRefGroup = 642F28DB1E24CA4B009251C9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				642F28D91E24CA4B009251C9 /* UBTracker */,
+				642F28F21E24CA4B009251C9 /* UBTrackerTests */,
+				642F28FD1E24CA4B009251C9 /* UBTrackerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		642F28D81E24CA4B009251C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAFF90441FC6C2DB00233BFE /* xcuitest.plist in Resources */,
+				642F28EA1E24CA4B009251C9 /* Assets.xcassets in Resources */,
+				642F29131E24CE96009251C9 /* automation.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		642F28F11E24CA4B009251C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		642F28FC1E24CA4B009251C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		642F28D61E24CA4B009251C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAFF90421FC6C2CE00233BFE /* UBViewHierarchyDumper.m in Sources */,
+				642F292B1E24CEA0009251C9 /* UserBehaviorTracker.m in Sources */,
+				642F28E51E24CA4B009251C9 /* ViewController.m in Sources */,
+				642F29281E24CEA0009251C9 /* TrackingCodeMakerPythonPlugin.m in Sources */,
+				642F29291E24CEA0009251C9 /* TrackingCodeMakerRubyPlugin.m in Sources */,
+				642F29251E24CEA0009251C9 /* TrackingCapabilities.m in Sources */,
+				642F28E21E24CA4B009251C9 /* AppDelegate.m in Sources */,
+				642F292A1E24CEA0009251C9 /* UIElement.m in Sources */,
+				642F28DF1E24CA4B009251C9 /* main.m in Sources */,
+				642F29271E24CEA0009251C9 /* TrackingCodeMakerPlugin.m in Sources */,
+				642F29261E24CEA0009251C9 /* TrackingCodeMakerFactory.m in Sources */,
+				BAFF90411FC6C2CE00233BFE /* UBNode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		642F28EF1E24CA4B009251C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				642F28F81E24CA4B009251C9 /* UBTrackerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		642F28FA1E24CA4B009251C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				642F29031E24CA4B009251C9 /* UBTrackerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		642F28F51E24CA4B009251C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 642F28D91E24CA4B009251C9 /* UBTracker */;
+			targetProxy = 642F28F41E24CA4B009251C9 /* PBXContainerItemProxy */;
+		};
+		642F29001E24CA4B009251C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 642F28D91E24CA4B009251C9 /* UBTracker */;
+			targetProxy = 642F28FF1E24CA4B009251C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		642F29051E24CA4B009251C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		642F29061E24CA4B009251C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		642F29081E24CA4B009251C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = UBTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobster.UBTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		642F29091E24CA4B009251C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = UBTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobster.UBTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		642F290B1E24CA4B009251C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = UBTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobster.UBTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UBTracker.app/UBTracker";
+			};
+			name = Debug;
+		};
+		642F290C1E24CA4B009251C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = UBTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobster.UBTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UBTracker.app/UBTracker";
+			};
+			name = Release;
+		};
+		642F290E1E24CA4B009251C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UBTrackerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobster.UBTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = UBTracker;
+			};
+			name = Debug;
+		};
+		642F290F1E24CA4B009251C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UBTrackerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobster.UBTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = UBTracker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		642F28D51E24CA4B009251C9 /* Build configuration list for PBXProject "UBTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				642F29051E24CA4B009251C9 /* Debug */,
+				642F29061E24CA4B009251C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		642F29071E24CA4B009251C9 /* Build configuration list for PBXNativeTarget "UBTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				642F29081E24CA4B009251C9 /* Debug */,
+				642F29091E24CA4B009251C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		642F290A1E24CA4B009251C9 /* Build configuration list for PBXNativeTarget "UBTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				642F290B1E24CA4B009251C9 /* Debug */,
+				642F290C1E24CA4B009251C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		642F290D1E24CA4B009251C9 /* Build configuration list for PBXNativeTarget "UBTrackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				642F290E1E24CA4B009251C9 /* Debug */,
+				642F290F1E24CA4B009251C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 642F28D21E24CA4B009251C9 /* Project object */;
+}
