@@ -10,15 +10,16 @@
 #import "TrackingCodeMakerFactory.h"
 
 @class TrackingCapabilities;
-@class UIElement;
 
 @interface TrackingCodeMakerPlugin : NSObject
+
 @property (nonatomic, readonly, strong)TrackingCapabilities *capabilities;
 @property (nonatomic, copy) NSString *scriptPath;
 
 - (instancetype)initCodeMakerPluginWith:(TrackingCapabilities *)capabilities;
-- (void)recordTapActionWithElement:(UIElement *)element;
+- (void)recordTapActionWithAccessibilityIdentifier:(NSString *)accessibilityIdentifier;
 - (void)writeToFileWithCode:(NSString *)code;
 - (void)startRecord;
 - (void)stopRecord;
+
 @end

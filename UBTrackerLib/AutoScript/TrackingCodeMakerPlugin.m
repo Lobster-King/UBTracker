@@ -22,10 +22,6 @@
     return [self initCodeMakerPluginWith:nil];
 }
 
-- (void)recordTapActionWithElement:(UIElement *)element{
-    
-}
-
 - (void)startRecord{
     
 }
@@ -60,12 +56,5 @@
     }
     return _scriptPath;
 }
-
-//- (HierarchyViewer *)hierarchyViewer{
-//    if (!_hierarchyViewer) {
-//        _hierarchyViewer = [HierarchyViewer new];
-//    }
-//    return _hierarchyViewer;
-//}
 
 @end

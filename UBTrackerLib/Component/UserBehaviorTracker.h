@@ -10,8 +10,10 @@
 
 @class TrackingCodeMakerPlugin;
 @interface UserBehaviorTracker : NSObject
+
 @property (nonatomic, strong) dispatch_queue_t codeMakerQueue;
 @property (nonatomic, strong) TrackingCodeMakerPlugin *codeMaker;
+
 + (UserBehaviorTracker *)sharedInstance;
 - (void)hook;
 

@@ -93,8 +93,10 @@
     
 }
 
-+ (UBViewNode *)retrieveNodeWithSender:(id)sender{
-    UBViewNode *headNode = [self dumpCurrentViewHierarchy];
++ (UBViewNode *)retrieveNodeWithSender:(id)sender withHeadNode:(UBViewNode *)headNode{
+    if (!headNode) {
+        headNode = [self dumpCurrentViewHierarchy];
+    }
     UBViewNode *targetNode = nil;
     [self findTargetNodeWithNode:headNode withSender:sender withCusor:&targetNode];
     return targetNode;

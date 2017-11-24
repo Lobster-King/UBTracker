@@ -7,6 +7,7 @@
 //
 
 #import "UBViewNode.h"
+#import <UIKit/UIKit.h>
 
 @interface UBViewNode()
 
@@ -101,6 +102,9 @@
         return;
     }
     _nodeUniquePath = [_nodeSuper.nodeUniquePath stringByAppendingString:[NSString stringWithFormat:@">%@[%ld]",_nodeXCType,_nodeSameIndex]];
+    /*同步设置accessibilityIdentifier*/
+    [_nodeSelf setAccessibilityIdentifier:_nodeUniquePath];
+//    [_nodeSelf setAccessibilityLabel:_nodeUniquePath];
 }
 
 @end

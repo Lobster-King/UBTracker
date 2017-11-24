@@ -54,18 +54,22 @@ driver = Appium::Driver.new({caps: caps, appium_lib: opts}).start_driver\n\
     [self writeToFileWithCode:code];
 }
 
-- (void)recordTapActionWithElement:(UIElement *)element{
+//- (void)recordTapActionWithElement:(UIElement *)element{
 //    NSString *code = [self.hierarchyViewer behaviorTimelineWithElement:element];
-    NSString *code = nil;
+//    NSString *code = nil;
 //    if ([element.actionSender isKindOfClass:[UITableViewCell class]]) {
 //        NSString *targetCode = [NSString stringWithFormat:@"#class->%@ sel->%@ to->%@#\nwait_true(%@) {exists{find_element(:xpath, \"%@\").click}}\n",[element.actionSender class],NSStringFromSelector(element.action),[element.actionReciever description],self.capabilities.waitTime,code];
 //        [self writeToFileWithCode:targetCode];
-        return;
+//        return;
 //    }
-    
+//    
 //    NSString *targetCode = [NSString stringWithFormat:@"#title->%@ sel->%@ to->%@#\nwait_true(%@) {exists{find_element(:xpath, \"%@\").click}}\n",[((UIButton *)element.actionSender) respondsToSelector:@selector(currentTitle)]?((UIButton *)element.actionSender).currentTitle:@"",NSStringFromSelector(element.action),[element.actionReciever description],self.capabilities.waitTime,code];
-
+//
 //    [self writeToFileWithCode:targetCode];
+//}
+
+- (void)recordTapActionWithAccessibilityIdentifier:(NSString *)accessibilityIdentifier{
+    
 }
 
 @end

@@ -12,7 +12,6 @@
 @interface UBViewHierarchyDumper : NSObject
 
 + (UBViewNode *)dumpCurrentViewHierarchy;
-
-+ (UBViewNode *)retrieveNodeWithSender:(id)sender;
++ (UBViewNode *)retrieveNodeWithSender:(id)sender withHeadNode:(UBViewNode *)headNode;
 
 @end

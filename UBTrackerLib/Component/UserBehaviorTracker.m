@@ -13,7 +13,6 @@
 #import "UBViewHierarchyDumper.h"
 #import "UBViewNode.h"
 
-
 @interface UserBehaviorTracker ()
 
 @property (nonatomic, strong) UBViewNode *headNode;/*current view head node*/
@@ -42,7 +41,6 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     BOOL isPop = [self track_navigationBar:navigationBar shouldPopItem:item];
     
     
-    
     return isPop;
 }
 
@@ -59,37 +57,22 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 - (void)track_sendAction:(SEL)action to:(id)target from:(id)sender forEvent:(UIEvent *)event{
     [self track_sendAction:action to:target from:sender forEvent:event];
     
-    
-    if ([sender accessibilityIdentifier]) {
-        /*如果有accessibilityIdentifier则优先使用*/
-        
-    } else{
-        /*使用xpath*/
-        
-    }
-    
-    UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:sender];
-    
-    if (targetNode) {
-        /*发现目标*/
-        
-    } else{
-        /*未发现目标，层级发生变化*/
+    NSString *accessibilityIdentifier = [sender accessibilityIdentifier];
+    if (!accessibilityIdentifier) {
+        UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:sender withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
+        if (targetNode) {
+            /*发现目标*/
+            accessibilityIdentifier = [targetNode.nodeSelf accessibilityIdentifier];
+        }
         
     }
-
     
-    if ([NSStringFromClass([target class]) isEqualToString:@"GrowingUIControlObserver"]) {
+    if (!accessibilityIdentifier.length) {
         return;
     }
-    /*record actions with element*/
+    
     dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
-//        UIElement *element = [UIElement new];
-//        element.actionSender = sender;
-//        element.actionReciever = target;
-//        element.action = action;
-//        element.event = event;
-//        [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithElement:element];
+        [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithAccessibilityIdentifier:accessibilityIdentifier];
     });
 }
 
@@ -122,15 +105,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 - (void)track_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event{
     [self track_sendAction:action to:target forEvent:event];
-    /*record actions with element*/
-//    dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
-//        UIElement *element = [UIElement new];
-//        element.actionSender = sender;
-//        element.actionReciever = target;
-//        element.action = action;
-//        element.event = event;
-//        [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithElement:element];
-//    });
+    
 
 }
 
@@ -356,13 +331,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     NSLog(@"current index->%ld",indexPath.row);
     id sender = [tableView cellForRowAtIndexPath:indexPath];
     dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
-//        UIElement *element = [UIElement new];
-//        element.actionSender = sender;
-//        element.actionReciever = nil;
-//        element.action = NULL;
-//        element.event = nil;
-//        element.index = indexPath.row + 1;
-//        [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithElement:element];
+        
     });
 
 }
@@ -392,6 +361,8 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
     /*所有UIControl、UIBarButtonItem*/
     [UIApplication trackHook];
+    
+    [UIViewController trackHook];
     
     /*监控系统自带返回按钮*/
     [UINavigationController trackHook];
