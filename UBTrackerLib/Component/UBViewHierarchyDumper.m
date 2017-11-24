@@ -17,6 +17,8 @@
     UBNode *headNode = [[UBNode alloc]init];
     headNode.nodeSelf = mainApplication;
     headNode.nodeSuper = nil;
+    headNode.nodeIndex = 0;
+    headNode.nodeSameIndex = 0;
     headNode.nodeContemporarieIndex = 0;
     headNode.nodeDepth = 0;
     headNode.nodeXCType = NSStringFromClass([mainApplication class]);
@@ -30,6 +32,7 @@
         winNode.nodeSelf = window;
         winNode.nodeSuper = headNode;
         winNode.nodeIndex = index;
+        winNode.nodeSameIndex = index;
         winNode.nodeContemporarieIndex = index;
         winNode.nodeDepth = 1;
         winNode.nodeXCType = NSStringFromClass([window class]);
@@ -47,11 +50,25 @@
         return;
     }
     
-    /*同层次索引控制变量*/
+    /*同父节点所在的索引（家中排行）*/
     NSInteger index = 0;
+    /*同父节点家中的同性别排行*/
+    NSMutableDictionary *increaseSameRecoder = [NSMutableDictionary dictionary];
     for (UIView *subview in [node.nodeSelf subviews]) {
         
-        /*以类名和层次为键，例：UIView->2*/
+        
+        /*同父节点中同性别索引，以类名为键*/
+        NSString *keySame = NSStringFromClass([subview class]);
+        NSNumber *increaseSameIndex = [increaseSameRecoder objectForKey:keySame];
+        
+        if (increaseSameIndex) {
+            increaseSameIndex = @([increaseSameIndex integerValue] + 1);
+        } else{
+            increaseSameIndex = @(0);
+        }
+        [increaseSameRecoder setValue:increaseSameIndex forKey:keySame];
+        
+        /*同族中所有同辈中排行索引，以类名和层次为键，例：UIView->2*/
         NSString *key = [NSString stringWithFormat:@"%@->%ld",NSStringFromClass([subview class]),node.nodeDepth + 1];
         NSNumber *increaseIndex = [recoder objectForKey:key];
         if (increaseIndex) {
@@ -65,6 +82,10 @@
         childNode.nodeSelf = subview;
         childNode.nodeSuper = node;
         childNode.nodeIndex = index;
+        childNode.nodeSameIndex = [increaseSameIndex integerValue];
+        
+        NSLog(@"nodeSameIndex->%ld",childNode.nodeSameIndex);
+        
         childNode.nodeContemporarieIndex = [increaseIndex integerValue];
         childNode.nodeDepth = node.nodeDepth + 1;
         childNode.nodeXCType = NSStringFromClass([subview class]);

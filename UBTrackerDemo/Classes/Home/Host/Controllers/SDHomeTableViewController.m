@@ -161,10 +161,7 @@ const CGFloat kHomeTableViewAnimationDuration = 0.25;
         }];
     }
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UBNode *head = [UBViewHierarchyDumper dumpCurrentViewHierarchy];
-    });
-    
+    UBNode *head = [UBViewHierarchyDumper dumpCurrentViewHierarchy];
     
 }
 
