@@ -10,9 +10,15 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 #import "TrackingCodeMakerPlugin.h"
-#import "UIElement.h"
 #import "UBViewHierarchyDumper.h"
-#import "UBNode.h"
+#import "UBViewNode.h"
+
+
+@interface UserBehaviorTracker ()
+
+@property (nonatomic, strong) UBViewNode *headNode;/*current view head node*/
+
+@end
 
 static UserBehaviorTracker *sharedInstance = nil;
 
@@ -62,7 +68,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
         
     }
     
-    UBNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:sender];
+    UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:sender];
     
     if (targetNode) {
         /*发现目标*/
@@ -78,13 +84,30 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     }
     /*record actions with element*/
     dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
-        UIElement *element = [UIElement new];
-        element.actionSender = sender;
-        element.actionReciever = target;
-        element.action = action;
-        element.event = event;
-        [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithElement:element];
+//        UIElement *element = [UIElement new];
+//        element.actionSender = sender;
+//        element.actionReciever = target;
+//        element.action = action;
+//        element.event = event;
+//        [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithElement:element];
     });
+}
+
+@end
+
+@implementation UIViewController (TraceHook)
+
++ (void)trackHook{
+    trackExchangeMethod([UIViewController class], @selector(viewDidAppear:), @selector(track_viewDidAppear:));
+}
+
+- (void)track_viewDidAppear:(BOOL)animated{
+    [self track_viewDidAppear:animated];
+    /*dump current view*/
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [UserBehaviorTracker sharedInstance].headNode = [UBViewHierarchyDumper dumpCurrentViewHierarchy];
+    });
+    
 }
 
 @end
@@ -333,13 +356,13 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     NSLog(@"current index->%ld",indexPath.row);
     id sender = [tableView cellForRowAtIndexPath:indexPath];
     dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
-        UIElement *element = [UIElement new];
-        element.actionSender = sender;
-        element.actionReciever = nil;
-        element.action = NULL;
-        element.event = nil;
-        element.index = indexPath.row + 1;
-        [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithElement:element];
+//        UIElement *element = [UIElement new];
+//        element.actionSender = sender;
+//        element.actionReciever = nil;
+//        element.action = NULL;
+//        element.event = nil;
+//        element.index = indexPath.row + 1;
+//        [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithElement:element];
     });
 
 }

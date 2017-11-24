@@ -141,15 +141,12 @@
 		BAFF92261FC7B68D00233BFE /* pic8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BAFF91A51FC7B68D00233BFE /* pic8.jpg */; };
 		BAFF92271FC7B68D00233BFE /* picon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BAFF91A61FC7B68D00233BFE /* picon.jpg */; };
 		BAFF92281FC7B68D00233BFE /* tx.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BAFF91A71FC7B68D00233BFE /* tx.jpeg */; };
-		BAFF92301FC7BA0500233BFE /* UBTrackerLib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAFF922F1FC7BA0500233BFE /* UBTrackerLib.h */; };
-		BAFF92321FC7BA0500233BFE /* UBTrackerLib.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF92311FC7BA0500233BFE /* UBTrackerLib.m */; };
 		BAFF924D1FC7BA3700233BFE /* TrackingCapabilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF923A1FC7BA3600233BFE /* TrackingCapabilities.m */; };
 		BAFF924E1FC7BA3700233BFE /* TrackingCodeMakerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF923C1FC7BA3600233BFE /* TrackingCodeMakerFactory.m */; };
 		BAFF924F1FC7BA3700233BFE /* TrackingCodeMakerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF923E1FC7BA3600233BFE /* TrackingCodeMakerPlugin.m */; };
 		BAFF92501FC7BA3700233BFE /* TrackingCodeMakerPythonPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF92401FC7BA3600233BFE /* TrackingCodeMakerPythonPlugin.m */; };
 		BAFF92511FC7BA3700233BFE /* TrackingCodeMakerRubyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF92421FC7BA3600233BFE /* TrackingCodeMakerRubyPlugin.m */; };
-		BAFF92521FC7BA3700233BFE /* UIElement.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF92441FC7BA3600233BFE /* UIElement.m */; };
-		BAFF92531FC7BA3700233BFE /* UBNode.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF92481FC7BA3700233BFE /* UBNode.m */; };
+		BAFF92531FC7BA3700233BFE /* UBViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF92481FC7BA3700233BFE /* UBViewNode.m */; };
 		BAFF92541FC7BA3700233BFE /* UBViewHierarchyDumper.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF924A1FC7BA3700233BFE /* UBViewHierarchyDumper.m */; };
 		BAFF92551FC7BA3700233BFE /* UserBehaviorTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF924C1FC7BA3700233BFE /* UserBehaviorTracker.m */; };
 		BAFF92561FC7BB9F00233BFE /* libUBTrackerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFF922D1FC7BA0500233BFE /* libUBTrackerLib.a */; };
@@ -193,7 +190,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				BAFF92301FC7BA0500233BFE /* UBTrackerLib.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,8 +417,6 @@
 		BAFF91A61FC7B68D00233BFE /* picon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picon.jpg; sourceTree = "<group>"; };
 		BAFF91A71FC7B68D00233BFE /* tx.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tx.jpeg; sourceTree = "<group>"; };
 		BAFF922D1FC7BA0500233BFE /* libUBTrackerLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUBTrackerLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BAFF922F1FC7BA0500233BFE /* UBTrackerLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBTrackerLib.h; sourceTree = "<group>"; };
-		BAFF92311FC7BA0500233BFE /* UBTrackerLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBTrackerLib.m; sourceTree = "<group>"; };
 		BAFF92381FC7BA3600233BFE /* automation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = automation.plist; sourceTree = "<group>"; };
 		BAFF92391FC7BA3600233BFE /* TrackingCapabilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingCapabilities.h; sourceTree = "<group>"; };
 		BAFF923A1FC7BA3600233BFE /* TrackingCapabilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingCapabilities.m; sourceTree = "<group>"; };
@@ -434,11 +428,9 @@
 		BAFF92401FC7BA3600233BFE /* TrackingCodeMakerPythonPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingCodeMakerPythonPlugin.m; sourceTree = "<group>"; };
 		BAFF92411FC7BA3600233BFE /* TrackingCodeMakerRubyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingCodeMakerRubyPlugin.h; sourceTree = "<group>"; };
 		BAFF92421FC7BA3600233BFE /* TrackingCodeMakerRubyPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingCodeMakerRubyPlugin.m; sourceTree = "<group>"; };
-		BAFF92431FC7BA3600233BFE /* UIElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIElement.h; sourceTree = "<group>"; };
-		BAFF92441FC7BA3600233BFE /* UIElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIElement.m; sourceTree = "<group>"; };
 		BAFF92451FC7BA3600233BFE /* xcuitest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = xcuitest.plist; sourceTree = "<group>"; };
-		BAFF92471FC7BA3600233BFE /* UBNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBNode.h; sourceTree = "<group>"; };
-		BAFF92481FC7BA3700233BFE /* UBNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBNode.m; sourceTree = "<group>"; };
+		BAFF92471FC7BA3600233BFE /* UBViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBViewNode.h; sourceTree = "<group>"; };
+		BAFF92481FC7BA3700233BFE /* UBViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBViewNode.m; sourceTree = "<group>"; };
 		BAFF92491FC7BA3700233BFE /* UBViewHierarchyDumper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBViewHierarchyDumper.h; sourceTree = "<group>"; };
 		BAFF924A1FC7BA3700233BFE /* UBViewHierarchyDumper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBViewHierarchyDumper.m; sourceTree = "<group>"; };
 		BAFF924B1FC7BA3700233BFE /* UserBehaviorTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBehaviorTracker.h; sourceTree = "<group>"; };
@@ -1261,8 +1253,6 @@
 				BAFF92361FC7BA3600233BFE /* AutoLog */,
 				BAFF92371FC7BA3600233BFE /* AutoScript */,
 				BAFF92461FC7BA3600233BFE /* Component */,
-				BAFF922F1FC7BA0500233BFE /* UBTrackerLib.h */,
-				BAFF92311FC7BA0500233BFE /* UBTrackerLib.m */,
 			);
 			path = UBTrackerLib;
 			sourceTree = "<group>";
@@ -1289,8 +1279,6 @@
 				BAFF92401FC7BA3600233BFE /* TrackingCodeMakerPythonPlugin.m */,
 				BAFF92411FC7BA3600233BFE /* TrackingCodeMakerRubyPlugin.h */,
 				BAFF92421FC7BA3600233BFE /* TrackingCodeMakerRubyPlugin.m */,
-				BAFF92431FC7BA3600233BFE /* UIElement.h */,
-				BAFF92441FC7BA3600233BFE /* UIElement.m */,
 			);
 			path = AutoScript;
 			sourceTree = "<group>";
@@ -1298,8 +1286,8 @@
 		BAFF92461FC7BA3600233BFE /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				BAFF92471FC7BA3600233BFE /* UBNode.h */,
-				BAFF92481FC7BA3700233BFE /* UBNode.m */,
+				BAFF92471FC7BA3600233BFE /* UBViewNode.h */,
+				BAFF92481FC7BA3700233BFE /* UBViewNode.m */,
 				BAFF92491FC7BA3700233BFE /* UBViewHierarchyDumper.h */,
 				BAFF924A1FC7BA3700233BFE /* UBViewHierarchyDumper.m */,
 				BAFF924B1FC7BA3700233BFE /* UserBehaviorTracker.h */,
@@ -1723,14 +1711,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAFF92531FC7BA3700233BFE /* UBNode.m in Sources */,
+				BAFF92531FC7BA3700233BFE /* UBViewNode.m in Sources */,
 				BAFF924D1FC7BA3700233BFE /* TrackingCapabilities.m in Sources */,
-				BAFF92521FC7BA3700233BFE /* UIElement.m in Sources */,
 				BAFF924F1FC7BA3700233BFE /* TrackingCodeMakerPlugin.m in Sources */,
 				BAFF92501FC7BA3700233BFE /* TrackingCodeMakerPythonPlugin.m in Sources */,
 				BAFF92511FC7BA3700233BFE /* TrackingCodeMakerRubyPlugin.m in Sources */,
 				BAFF92541FC7BA3700233BFE /* UBViewHierarchyDumper.m in Sources */,
-				BAFF92321FC7BA0500233BFE /* UBTrackerLib.m in Sources */,
 				BAFF924E1FC7BA3700233BFE /* TrackingCodeMakerFactory.m in Sources */,
 				BAFF92551FC7BA3700233BFE /* UserBehaviorTracker.m in Sources */,
 			);
@@ -2062,6 +2048,7 @@
 				BAFF90971FC7B58F00233BFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BAFF90981FC7B58F00233BFE /* Build configuration list for PBXNativeTarget "UBTrackerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -2070,6 +2057,7 @@
 				BAFF909A1FC7B58F00233BFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BAFF909B1FC7B58F00233BFE /* Build configuration list for PBXNativeTarget "UBTrackerDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -2078,6 +2066,7 @@
 				BAFF909D1FC7B58F00233BFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BAFF92331FC7BA0500233BFE /* Build configuration list for PBXNativeTarget "UBTrackerLib" */ = {
 			isa = XCConfigurationList;
@@ -2086,6 +2075,7 @@
 				BAFF92351FC7BA0500233BFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

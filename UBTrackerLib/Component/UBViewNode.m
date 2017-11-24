@@ -1,22 +1,23 @@
 //
-//  UBNode.m
+//  UBViewNode.m
 //  UBTracker
 //
 //  Created by qinzhiwei on 17/11/22.
 //  Copyright © 2017年 lobster. All rights reserved.
 //
 
-#import "UBNode.h"
+#import "UBViewNode.h"
 
-@interface UBNode()
+@interface UBViewNode()
 
 @property (nonatomic, assign, readwrite) NSUInteger nodeHash;
-@property (nonatomic, copy, readwrite)   NSString *nodeXPath;
 @property (nonatomic, copy, readwrite)   NSString *nodePath;
+@property (nonatomic, copy, readwrite)   NSString *nodeUniquePath;
+@property (nonatomic, copy, readwrite)   NSString *nodeXPath;
 
 @end
 
-@implementation UBNode
+@implementation UBViewNode
 
 #pragma mark--Life Cycle--
 - (instancetype)init{
@@ -40,6 +41,8 @@
     
     /*暂取同一个*/
     [self setNodePathWithXCType];
+    
+    [self setNodeUniquePathWithXCType];
 }
 
 - (void)setNodeContemporarieIndex:(NSInteger)nodeContemporarieIndex{
@@ -50,6 +53,12 @@
 - (void)setNodeIndex:(NSInteger)nodeIndex{
     _nodeIndex = nodeIndex;
     [self setNodePathWithXCType];
+}
+
+- (void)setNodeSameIndex:(NSInteger)nodeSameIndex{
+    _nodeSameIndex = nodeSameIndex;
+    [self setNodeUniquePathWithXCType];
+    
 }
 
 - (void)setNodeXPathWithXCType{
@@ -79,6 +88,19 @@
     }
     _nodePath = [_nodeSuper.nodePath stringByAppendingString:[NSString stringWithFormat:@">%@[%ld]",_nodeXCType,_nodeIndex]];
     NSLog(@"nodePath_____%@",_nodePath);
+}
+
+- (void)setNodeUniquePathWithXCType{
+    if (!_nodeSuper && _nodeSuper.nodeDepth == 0) {
+        /*头节点*/
+        _nodeUniquePath = [NSString stringWithFormat:@"%@",_nodeXCType];
+        return;
+    }
+    
+    if (!_nodeXCType || !_nodeSuper) {
+        return;
+    }
+    _nodeUniquePath = [_nodeSuper.nodeUniquePath stringByAppendingString:[NSString stringWithFormat:@">%@[%ld]",_nodeXCType,_nodeSameIndex]];
 }
 
 @end

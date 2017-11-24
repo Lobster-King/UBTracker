@@ -8,13 +8,13 @@
 
 #import "UBViewHierarchyDumper.h"
 #import <UIKit/UIKit.h>
-#import "UBNode.h"
+#import "UBViewNode.h"
 
 @implementation UBViewHierarchyDumper
 
-+ (UBNode *)dumpCurrentViewHierarchy{
++ (UBViewNode *)dumpCurrentViewHierarchy{
     UIApplication *mainApplication = [UIApplication sharedApplication];
-    UBNode *headNode = [[UBNode alloc]init];
+    UBViewNode *headNode = [[UBViewNode alloc]init];
     headNode.nodeSelf = mainApplication;
     headNode.nodeSuper = nil;
     headNode.nodeIndex = 0;
@@ -28,7 +28,7 @@
     NSMutableDictionary *increaseRecoder = [NSMutableDictionary dictionary];
     for (UIWindow *window in mainApplication.windows) {
         static NSInteger index = 0;
-        UBNode *winNode = [[UBNode alloc]init];
+        UBViewNode *winNode = [[UBViewNode alloc]init];
         winNode.nodeSelf = window;
         winNode.nodeSuper = headNode;
         winNode.nodeIndex = index;
@@ -44,7 +44,7 @@
     return headNode;
 }
 
-+ (void)dumpViewRecursiveWithNode:(UBNode *)node withRecoder:(NSMutableDictionary *)recoder{
++ (void)dumpViewRecursiveWithNode:(UBViewNode *)node withRecoder:(NSMutableDictionary *)recoder{
     /*若node为叶子节点，则退出*/
     if (![node.nodeSelf subviews].count) {
         return;
@@ -78,14 +78,11 @@
         }
         [recoder setValue:increaseIndex forKey:key];
         
-        UBNode *childNode = [[UBNode alloc]init];
+        UBViewNode *childNode = [[UBViewNode alloc]init];
         childNode.nodeSelf = subview;
         childNode.nodeSuper = node;
         childNode.nodeIndex = index;
         childNode.nodeSameIndex = [increaseSameIndex integerValue];
-        
-        NSLog(@"nodeSameIndex->%ld",childNode.nodeSameIndex);
-        
         childNode.nodeContemporarieIndex = [increaseIndex integerValue];
         childNode.nodeDepth = node.nodeDepth + 1;
         childNode.nodeXCType = NSStringFromClass([subview class]);
@@ -96,16 +93,16 @@
     
 }
 
-+ (UBNode *)retrieveNodeWithSender:(id)sender{
-    UBNode *headNode = [self dumpCurrentViewHierarchy];
-    UBNode *targetNode = nil;
++ (UBViewNode *)retrieveNodeWithSender:(id)sender{
+    UBViewNode *headNode = [self dumpCurrentViewHierarchy];
+    UBViewNode *targetNode = nil;
     [self findTargetNodeWithNode:headNode withSender:sender withCusor:&targetNode];
     return targetNode;
 }
 
-+ (void)findTargetNodeWithNode:(UBNode *)node withSender:(id)sender withCusor:(UBNode**)cusor{
++ (void)findTargetNodeWithNode:(UBViewNode *)node withSender:(id)sender withCusor:(UBViewNode**)cusor{
     
-    for (UBNode *subNode in node.nodeChilds) {
+    for (UBViewNode *subNode in node.nodeChilds) {
         
         if (subNode.nodeSelf == sender) {
             *cusor = subNode;

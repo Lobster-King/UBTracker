@@ -8,33 +8,26 @@
 
 #import "TrackingCodeMakerRubyPlugin.h"
 #import "TrackingCapabilities.h"
-#import "UIElement.h"
 
 @implementation TrackingCodeMakerRubyPlugin
 
 - (void)preBoilerplateCode{
-    NSString *code = [NSString stringWithFormat:@"\n#User Behavior Tracking Demo Version#\n\nrequire 'rubygems'\n\
+    NSString *code = [NSString stringWithFormat:@"\n#User Behavior Tracking Demo.Rquire Appium Version(%@)#\n\nrequire 'rubygems'\n\
 require 'appium_lib'\
-\n\
-capabilities = {\n\
-\t'appium-version'=>'%@',\n\
-\t'platformName'=>'%@',\n\
-\t'platformVersion'=>'%@',\n\
-\t'showIOSLog'=>'%@',\n\
-\t'autoAcceptAlerts'=>'%@',\n", self.capabilities.appiumVersion,self.capabilities.platformName,self.capabilities.platformVersion,self.capabilities.showIOSLog,self.capabilities.autoAcceptAlerts];
+\n\ caps = {}\n\
+caps[\"platformName\"] = \"%@\"\n\
+caps[\"platformVersion\"] = \"%@\"\n\
+caps[\"deviceName\"] = \"%@\"\n\
+caps[\"automationName\"] = \"%@\"\n\
+caps[\"app\"] = \"%@\"\n ", self.capabilities.appiumVersion,self.capabilities.platformName,self.capabilities.platformVersion,self.capabilities.deviceName,self.capabilities.automationName,self.capabilities.app];
     
-    if ([self.capabilities.deviceName length] > 0){
-        code = [code stringByAppendingFormat:@"\t'deviceName'=>'%@',\n", self.capabilities.deviceName];
-    }
-    if ([self.capabilities.app length] > 0){
-        code = [code stringByAppendingFormat:@"\t'app'=>'%@'\n", self.capabilities.app];
-    }
-    code = [code stringByAppendingFormat:@"}\n\
+    code = [code stringByAppendingFormat:@"\n\
 \n\
-server_url = \"http://%@:%@/wd/hub\"\n\
-\n\
-Appium::Driver.new(caps: capabilities).start_driver\n\
-Appium.promote_appium_methods Object\n\
+opts = {\n\
+\tsauce_username = nil,\n\
+\tserver_url = \"http://%@:%@/wd/hub\"\n\
+}\n\
+driver = Appium::Driver.new({caps: caps, appium_lib: opts}).start_driver\n\
 \n", self.capabilities.serverAddress, self.capabilities.serverPort];
     
     [[NSFileManager defaultManager] removeItemAtPath:self.scriptPath error:nil];
@@ -64,15 +57,15 @@ Appium.promote_appium_methods Object\n\
 - (void)recordTapActionWithElement:(UIElement *)element{
 //    NSString *code = [self.hierarchyViewer behaviorTimelineWithElement:element];
     NSString *code = nil;
-    if ([element.actionSender isKindOfClass:[UITableViewCell class]]) {
-        NSString *targetCode = [NSString stringWithFormat:@"#class->%@ sel->%@ to->%@#\nwait_true(%@) {exists{find_element(:xpath, \"%@\").click}}\n",[element.actionSender class],NSStringFromSelector(element.action),[element.actionReciever description],self.capabilities.waitTime,code];
-        [self writeToFileWithCode:targetCode];
+//    if ([element.actionSender isKindOfClass:[UITableViewCell class]]) {
+//        NSString *targetCode = [NSString stringWithFormat:@"#class->%@ sel->%@ to->%@#\nwait_true(%@) {exists{find_element(:xpath, \"%@\").click}}\n",[element.actionSender class],NSStringFromSelector(element.action),[element.actionReciever description],self.capabilities.waitTime,code];
+//        [self writeToFileWithCode:targetCode];
         return;
-    }
+//    }
     
-    NSString *targetCode = [NSString stringWithFormat:@"#title->%@ sel->%@ to->%@#\nwait_true(%@) {exists{find_element(:xpath, \"%@\").click}}\n",[((UIButton *)element.actionSender) respondsToSelector:@selector(currentTitle)]?((UIButton *)element.actionSender).currentTitle:@"",NSStringFromSelector(element.action),[element.actionReciever description],self.capabilities.waitTime,code];
-    
-    [self writeToFileWithCode:targetCode];
+//    NSString *targetCode = [NSString stringWithFormat:@"#title->%@ sel->%@ to->%@#\nwait_true(%@) {exists{find_element(:xpath, \"%@\").click}}\n",[((UIButton *)element.actionSender) respondsToSelector:@selector(currentTitle)]?((UIButton *)element.actionSender).currentTitle:@"",NSStringFromSelector(element.action),[element.actionReciever description],self.capabilities.waitTime,code];
+
+//    [self writeToFileWithCode:targetCode];
 }
 
 @end

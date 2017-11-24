@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class UBNode;
+@class UBViewNode;
 @interface UBViewHierarchyDumper : NSObject
 
-+ (UBNode *)dumpCurrentViewHierarchy;
++ (UBViewNode *)dumpCurrentViewHierarchy;
 
-+ (UBNode *)retrieveNodeWithSender:(id)sender;
++ (UBViewNode *)retrieveNodeWithSender:(id)sender;
 
 @end

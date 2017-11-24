@@ -37,8 +37,6 @@
 #import "SDEyeAnimationView.h"
 #import "SDShortVideoController.h"
 #import "SDChatTableViewController.h"
-#import "UBNode.h"
-#import "UBViewHierarchyDumper.h"
 
 #define kHomeTableViewControllerCellId @"HomeTableViewController"
 
@@ -160,8 +158,6 @@ const CGFloat kHomeTableViewAnimationDuration = 0.25;
             [weakSelf startTableViewAnimationWithHidden:NO];
         }];
     }
-    
-    UBNode *head = [UBViewHierarchyDumper dumpCurrentViewHierarchy];
     
 }
 

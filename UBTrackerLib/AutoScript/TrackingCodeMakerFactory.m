@@ -25,10 +25,10 @@ static inline TrackingCodeMakerPlugin *coderMakerPluginFactory(TrackingCapabilit
 
 + (TrackingCapabilities *)defaultCapabilities{
     TrackingCapabilities *capabilities = [TrackingCapabilities new];
-    capabilities.appiumVersion = @"1.0";
+    capabilities.appiumVersion = @"1.7.1";
     capabilities.platformName  = @"iOS";
     capabilities.platformVersion = @"9.3";
-    capabilities.deviceName    = @"iPhone 6";
+    capabilities.deviceName    = @"iPhone 6s";
     capabilities.app           = @"/Users/lobster/Desktop/appium_test/ElongTrain.app";
     capabilities.serverAddress = @"127.0.0.1";
     capabilities.serverPort    = @"4723";

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "TrackingCodeMakerFactory.h"
-//#import "HierarchyViewer.h"
 
 @class TrackingCapabilities;
 @class UIElement;
@@ -16,7 +15,6 @@
 @interface TrackingCodeMakerPlugin : NSObject
 @property (nonatomic, readonly, strong)TrackingCapabilities *capabilities;
 @property (nonatomic, copy) NSString *scriptPath;
-//@property (nonatomic, strong) HierarchyViewer *hierarchyViewer;
 
 - (instancetype)initCodeMakerPluginWith:(TrackingCapabilities *)capabilities;
 - (void)recordTapActionWithElement:(UIElement *)element;
