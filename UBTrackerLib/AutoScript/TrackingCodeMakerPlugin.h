@@ -15,6 +15,8 @@
 
 @property (nonatomic, readonly, strong)TrackingCapabilities *capabilities;
 @property (nonatomic, copy) NSString *scriptPath;
+@property (nonatomic, assign) NSInteger tapIndex;
+@property (nonatomic, assign) NSInteger swapIndex;
 
 - (instancetype)initCodeMakerPluginWith:(TrackingCapabilities *)capabilities;
 - (void)recordTapActionWithAccessibilityIdentifier:(NSString *)accessibilityIdentifier;

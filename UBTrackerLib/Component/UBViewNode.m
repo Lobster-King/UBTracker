@@ -73,6 +73,7 @@
     if (!_nodeXCType || !_nodeSuper) {
         return;
     }
+    
     _nodeXPath = [_nodeSuper.nodeXPath stringByAppendingString:[NSString stringWithFormat:@"/%@[%ld]",_nodeXCType,_nodeContemporarieIndex]];
 }
 
@@ -87,6 +88,7 @@
     if (!_nodeXCType || !_nodeSuper) {
         return;
     }
+    
     _nodePath = [_nodeSuper.nodePath stringByAppendingString:[NSString stringWithFormat:@">%@[%ld]",_nodeXCType,_nodeIndex]];
     NSLog(@"nodePath_____%@",_nodePath);
 }
@@ -101,10 +103,11 @@
     if (!_nodeXCType || !_nodeSuper) {
         return;
     }
+    
     _nodeUniquePath = [_nodeSuper.nodeUniquePath stringByAppendingString:[NSString stringWithFormat:@">%@[%ld]",_nodeXCType,_nodeSameIndex]];
     /*同步设置accessibilityIdentifier*/
     [_nodeSelf setAccessibilityIdentifier:_nodeUniquePath];
-//    [_nodeSelf setAccessibilityLabel:_nodeUniquePath];
+    [_nodeSelf setAccessibilityLabel:_nodeUniquePath];
 }
 
 @end

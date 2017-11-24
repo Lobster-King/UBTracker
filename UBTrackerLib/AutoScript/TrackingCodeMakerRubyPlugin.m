@@ -14,7 +14,7 @@
 - (void)preBoilerplateCode{
     NSString *code = [NSString stringWithFormat:@"\n#User Behavior Tracking Demo.Rquire Appium Version(%@)#\n\nrequire 'rubygems'\n\
 require 'appium_lib'\
-\n\ caps = {}\n\
+\n\caps = {}\n\
 caps[\"platformName\"] = \"%@\"\n\
 caps[\"platformVersion\"] = \"%@\"\n\
 caps[\"deviceName\"] = \"%@\"\n\
@@ -24,8 +24,8 @@ caps[\"app\"] = \"%@\"\n ", self.capabilities.appiumVersion,self.capabilities.pl
     code = [code stringByAppendingFormat:@"\n\
 \n\
 opts = {\n\
-\tsauce_username = nil,\n\
-\tserver_url = \"http://%@:%@/wd/hub\"\n\
+\tsauce_username: nil,\n\
+\tserver_url: \"http://%@:%@/wd/hub\"\n\
 }\n\
 driver = Appium::Driver.new({caps: caps, appium_lib: opts}).start_driver\n\
 \n", self.capabilities.serverAddress, self.capabilities.serverPort];
@@ -69,7 +69,9 @@ driver = Appium::Driver.new({caps: caps, appium_lib: opts}).start_driver\n\
 //}
 
 - (void)recordTapActionWithAccessibilityIdentifier:(NSString *)accessibilityIdentifier{
-    
+    self.tapIndex++;
+    NSString *tapCode = [NSString stringWithFormat:@"el%ld = driver.find_elements(:accessibility_id, \"%@\")\nel%ld.click\n\n",self.tapIndex,accessibilityIdentifier,self.tapIndex];
+    [self writeToFileWithCode:tapCode];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "TrackingCodeMakerFactory.h"
 #import "TrackingCapabilities.h"
 #import "TrackingCodeMakerPlugin.h"
+#import "TrackingCodeMakerRubyPlugin.h"
 
 @implementation TrackingCodeMakerFactory
 
@@ -18,7 +19,10 @@
 
 static inline TrackingCodeMakerPlugin *coderMakerPluginFactory(TrackingCapabilities *capabilities){
     if ([capabilities.appiumLanguage isEqualToString: @"Ruby"]) {
-        return [[NSClassFromString(@"TrackingCodeMakerRubyPlugin") alloc]initCodeMakerPluginWith:capabilities];
+        Class rubyClass =  NSClassFromString(@"TrackingCodeMakerRubyPlugin");
+        TrackingCodeMakerPlugin *plugin = [[rubyClass alloc]initCodeMakerPluginWith:capabilities];
+        [plugin startRecord];
+        return plugin;
     }
     return nil;
 }
@@ -29,13 +33,14 @@ static inline TrackingCodeMakerPlugin *coderMakerPluginFactory(TrackingCapabilit
     capabilities.platformName  = @"iOS";
     capabilities.platformVersion = @"9.3";
     capabilities.deviceName    = @"iPhone 6s";
-    capabilities.app           = @"/Users/lobster/Desktop/appium_test/ElongTrain.app";
+    capabilities.app           = @"/Users/lobster/Desktop/UBTrackerDemo.app";
     capabilities.serverAddress = @"127.0.0.1";
     capabilities.serverPort    = @"4723";
     capabilities.appiumLanguage= @"Ruby";
     capabilities.autoAcceptAlerts = @"true";
     capabilities.showIOSLog    = @"false";
     capabilities.waitTime      = @"10";
+    capabilities.automationName= @"XCUITest";
     return capabilities;
 }
 
