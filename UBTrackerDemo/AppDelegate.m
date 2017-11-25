@@ -44,8 +44,10 @@
     self.window.rootViewController = [SDAppFrameTabBarController new];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    [[UserBehaviorTracker sharedInstance] hook];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[UserBehaviorTracker sharedInstance] hook];
+    });
     [self setupNavBar];
     return YES;
 }

@@ -16,6 +16,7 @@
 @interface UserBehaviorTracker ()
 
 @property (nonatomic, strong) UBViewNode *headNode;/*current view head node*/
+@property (nonatomic, strong) NSMutableSet<NSString*>*accessIdSet;/*存放事件accessId*/
 
 @end
 
@@ -31,6 +32,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     }
 }
 
+#pragma mark--UINavigationController--
 @implementation UINavigationController (TrackHook)
 
 + (void)trackHook{
@@ -46,8 +48,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 @end
 
-
-
+#pragma mark--UIApplication--
 @implementation UIApplication (TrackHook)
 
 + (void)trackHook{
@@ -56,10 +57,10 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
                         @selector(track_sendAction:to:from:forEvent:));
 }
 
-- (void)track_sendAction:(SEL)action to:(id)target from:(id)sender forEvent:(UIEvent *)event{
-    [self track_sendAction:action to:target from:sender forEvent:event];
+- (BOOL)track_sendAction:(SEL)action to:(id)target from:(id)sender forEvent:(UIEvent *)event{
     
     NSString *accessibilityIdentifier = [sender accessibilityIdentifier];
+    
     if (!accessibilityIdentifier) {
         UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:sender withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
         if (targetNode) {
@@ -69,17 +70,25 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
         
     }
     
-    if (!accessibilityIdentifier.length) {
-        return;
+    if (accessibilityIdentifier.length) {
+        
+        if ([[UserBehaviorTracker sharedInstance].accessIdSet containsObject:accessibilityIdentifier]) {
+            return [self track_sendAction:action to:target from:sender forEvent:event];
+        }
+        
+        [[UserBehaviorTracker sharedInstance].accessIdSet addObject:accessibilityIdentifier];
+        
+        dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
+            [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithAccessibilityIdentifier:accessibilityIdentifier];
+        });
     }
     
-    dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
-        [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithAccessibilityIdentifier:accessibilityIdentifier];
-    });
+    return [self track_sendAction:action to:target from:sender forEvent:event];
 }
 
 @end
 
+#pragma mark--UIViewController--
 @implementation UIViewController (TraceHook)
 
 + (void)trackHook{
@@ -89,7 +98,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 - (void)track_viewDidAppear:(BOOL)animated{
     [self track_viewDidAppear:animated];
     /*dump current view*/
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [UserBehaviorTracker sharedInstance].headNode = [UBViewHierarchyDumper dumpCurrentViewHierarchy];
     });
     
@@ -97,6 +106,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 @end
 
+#pragma mark--UIControl--
 @implementation UIControl (TrackHook)
 
 + (void)trackHook{
@@ -113,6 +123,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 @end
 
+#pragma mark--UITouch--
 @implementation UITouch (TrackHook)
 
 + (void)trackHook{
@@ -125,6 +136,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 @end
 
+#pragma mark--UIActionSheet--
 @implementation UIActionSheet (TrackHook)
 
 + (void)trackHook{
@@ -157,12 +169,11 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 - (void)track_actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     [self track_actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
     
-    
 }
-
 
 @end
 
+#pragma mark--UIAlertAction--
 @implementation UIAlertAction (TrackHook)
 
 + (void)trackHook{
@@ -177,6 +188,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 @end
 
+#pragma mark--UIAlertView--
 @implementation UIAlertView (TrackHook)
 
 + (void)trackHook{
@@ -212,6 +224,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 @end
 
+#pragma mark--UITextField--
 @implementation UITextField (TrackHook)
 
 + (void)trackHook{
@@ -247,12 +260,12 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 - (BOOL)track_textFieldShouldReturn:(UITextField *)textField{
     
-    
     return [self track_textFieldShouldReturn:textField];
 }
 
 @end
 
+#pragma mark--UICollectionView--
 @implementation UICollectionView (TrackHook)
 
 + (void)trackHook{
@@ -293,6 +306,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 @end
 
+#pragma mark--UITableView--
 @implementation UITableView (TrackHook)
 
 + (void)trackHook{
@@ -340,6 +354,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 @end
 
+#pragma mark--UserBehaviorTracker--
 @implementation UserBehaviorTracker
 
 
@@ -364,7 +379,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     /*所有UIControl、UIBarButtonItem*/
     [UIApplication trackHook];
     
-    [UIViewController trackHook];
+//    [UIViewController trackHook];
     
     /*监控系统自带返回按钮*/
     [UINavigationController trackHook];
@@ -403,6 +418,13 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
         _codeMaker = [TrackingCodeMakerFactory codeMakerPluginWithCodeMaker:nil];
     }
     return _codeMaker;
+}
+
+- (NSMutableSet *)accessIdSet{
+    if (!_accessIdSet) {
+        _accessIdSet = [NSMutableSet set];
+    }
+    return _accessIdSet;
 }
     
 @end

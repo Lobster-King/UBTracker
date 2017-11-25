@@ -23,11 +23,11 @@
     headNode.nodeDepth = 0;
     headNode.nodeXCType = NSStringFromClass([mainApplication class]);
     
+    NSInteger index = 0;
     /*先遍历第一个window，然后递归遍历window的所有子view，依此类推*/
     /*类名和层次为键，索引为值increase*/
     NSMutableDictionary *increaseRecoder = [NSMutableDictionary dictionary];
     for (UIWindow *window in mainApplication.windows) {
-        static NSInteger index = 0;
         UBViewNode *winNode = [[UBViewNode alloc]init];
         winNode.nodeSelf = window;
         winNode.nodeSuper = headNode;
@@ -55,7 +55,6 @@
     /*同父节点家中的同性别排行*/
     NSMutableDictionary *increaseSameRecoder = [NSMutableDictionary dictionary];
     for (UIView *subview in [node.nodeSelf subviews]) {
-        
         
         /*同父节点中同性别索引，以类名为键*/
         NSString *keySame = NSStringFromClass([subview class]);

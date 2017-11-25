@@ -50,7 +50,7 @@ driver = Appium::Driver.new({caps: caps, appium_lib: opts}).start_driver\n\
 
 - (void)postBoilerplateCode
 {
-    NSString *code = @"\ndriver_quit\n";
+    NSString *code = @"\ndriver.quit\n";
     [self writeToFileWithCode:code];
 }
 
@@ -70,7 +70,7 @@ driver = Appium::Driver.new({caps: caps, appium_lib: opts}).start_driver\n\
 
 - (void)recordTapActionWithAccessibilityIdentifier:(NSString *)accessibilityIdentifier{
     self.tapIndex++;
-    NSString *tapCode = [NSString stringWithFormat:@"el%ld = driver.find_elements(:accessibility_id, \"%@\")\nel%ld.click\n\n",self.tapIndex,accessibilityIdentifier,self.tapIndex];
+    NSString *tapCode = [NSString stringWithFormat:@"el%ld = driver.find_element(:accessibility_id, \"%@\")\nel%ld.click\n\n",self.tapIndex,accessibilityIdentifier,self.tapIndex];
     [self writeToFileWithCode:tapCode];
 }
 
