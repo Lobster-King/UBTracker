@@ -42,6 +42,23 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 - (BOOL)track_navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item{
     BOOL isPop = [self track_navigationBar:navigationBar shouldPopItem:item];
     
+    NSString *accessibilityIdentifier = [navigationBar accessibilityIdentifier];
+    
+    if (!accessibilityIdentifier) {
+        UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:navigationBar withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
+        if (targetNode) {
+            /*发现目标*/
+            accessibilityIdentifier = [targetNode.nodeSelf accessibilityIdentifier];
+        }
+        
+    }
+    
+    if (accessibilityIdentifier.length) {
+        
+        dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
+            [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithAccessibilityIdentifier:accessibilityIdentifier];
+        });
+    }
     
     return isPop;
 }
@@ -344,11 +361,23 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 - (void)track_tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self track_tableView:tableView didSelectRowAtIndexPath:indexPath];
-    NSLog(@"current index->%ld",indexPath.row);
     id sender = [tableView cellForRowAtIndexPath:indexPath];
-    dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
+    NSString *accessibilityIdentifier = [sender accessibilityIdentifier];
+    
+    if (!accessibilityIdentifier) {
+        UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:sender withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
+        if (targetNode) {
+            /*发现目标*/
+            accessibilityIdentifier = [targetNode.nodeSelf accessibilityIdentifier];
+        }
         
-    });
+    }
+    
+    if (accessibilityIdentifier.length) {
+        dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
+            [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithAccessibilityIdentifier:accessibilityIdentifier];
+        });
+    }
 
 }
 
@@ -379,7 +408,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     /*所有UIControl、UIBarButtonItem*/
     [UIApplication trackHook];
     
-//    [UIViewController trackHook];
+    [UIViewController trackHook];
     
     /*监控系统自带返回按钮*/
     [UINavigationController trackHook];
@@ -409,6 +438,19 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     
     [UICollectionView trackHook];
     
+}
+
+- (void)track_applicationDidFinishLaunching{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self hook];
+    });
+}
+
+- (void)track_applicationWillResignActive{
+    dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
+        [[UserBehaviorTracker sharedInstance].codeMaker stopRecord];
+    });
 }
 
 #pragma mark--Getters & Setters--

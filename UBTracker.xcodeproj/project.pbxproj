@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA4B6B8D1FC86F2C002F53D8 /* UIViewController+AAAA.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4B6B8C1FC86F2C002F53D8 /* UIViewController+AAAA.m */; };
+		BAFE6BCD1FC9460C000D9D45 /* UIApplication+UBHook.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFE6BCC1FC9460C000D9D45 /* UIApplication+UBHook.m */; };
+		BAFE6BCE1FC9460C000D9D45 /* UIApplication+UBHook.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFE6BCC1FC9460C000D9D45 /* UIApplication+UBHook.m */; };
 		BAFF906F1FC7B58E00233BFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF906E1FC7B58E00233BFE /* main.m */; };
 		BAFF90721FC7B58E00233BFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFF90711FC7B58E00233BFE /* AppDelegate.m */; };
 		BAFF907A1FC7B58E00233BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAFF90791FC7B58E00233BFE /* Assets.xcassets */; };
@@ -200,8 +201,8 @@
 		642F28DA1E24CA4B009251C9 /* UBTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UBTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642F28F31E24CA4B009251C9 /* UBTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UBTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		642F28FE1E24CA4B009251C9 /* UBTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UBTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA4B6B8B1FC86F2C002F53D8 /* UIViewController+AAAA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AAAA.h"; sourceTree = "<group>"; };
-		BA4B6B8C1FC86F2C002F53D8 /* UIViewController+AAAA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AAAA.m"; sourceTree = "<group>"; };
+		BAFE6BCB1FC9460C000D9D45 /* UIApplication+UBHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+UBHook.h"; sourceTree = "<group>"; };
+		BAFE6BCC1FC9460C000D9D45 /* UIApplication+UBHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+UBHook.m"; sourceTree = "<group>"; };
 		BAFF906B1FC7B58E00233BFE /* UBTrackerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UBTrackerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAFF906E1FC7B58E00233BFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BAFF90701FC7B58E00233BFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -876,8 +877,6 @@
 				BAFF90F11FC7B68D00233BFE /* SDHomeTableViewController.h */,
 				BAFF90F21FC7B68D00233BFE /* SDHomeTableViewController.m */,
 				BAFF90F31FC7B68D00233BFE /* ShortVideoController */,
-				BA4B6B8B1FC86F2C002F53D8 /* UIViewController+AAAA.h */,
-				BA4B6B8C1FC86F2C002F53D8 /* UIViewController+AAAA.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1297,6 +1296,8 @@
 				BAFF924A1FC7BA3700233BFE /* UBViewHierarchyDumper.m */,
 				BAFF924B1FC7BA3700233BFE /* UserBehaviorTracker.h */,
 				BAFF924C1FC7BA3700233BFE /* UserBehaviorTracker.m */,
+				BAFE6BCB1FC9460C000D9D45 /* UIApplication+UBHook.h */,
+				BAFE6BCC1FC9460C000D9D45 /* UIApplication+UBHook.m */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1599,6 +1600,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAFE6BCD1FC9460C000D9D45 /* UIApplication+UBHook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1664,7 +1666,6 @@
 				BAFF91B51FC7B68D00233BFE /* SDDiscoverTableViewController.m in Sources */,
 				BAFF91A81FC7B68D00233BFE /* SDAppFrameTabBarController.m in Sources */,
 				BAFF91C11FC7B68D00233BFE /* SDHomeTableViewController.m in Sources */,
-				BA4B6B8D1FC86F2C002F53D8 /* UIViewController+AAAA.m in Sources */,
 				BAFF91CE1FC7B68D00233BFE /* MLEmojiLabel.m in Sources */,
 				BAFF91AD1FC7B68D00233BFE /* SDChatTableViewController.m in Sources */,
 				BAFF91A91FC7B68D00233BFE /* SDBaseRefreshView.m in Sources */,
@@ -1724,6 +1725,7 @@
 				BAFF92511FC7BA3700233BFE /* TrackingCodeMakerRubyPlugin.m in Sources */,
 				BAFF92541FC7BA3700233BFE /* UBViewHierarchyDumper.m in Sources */,
 				BAFF924E1FC7BA3700233BFE /* TrackingCodeMakerFactory.m in Sources */,
+				BAFE6BCE1FC9460C000D9D45 /* UIApplication+UBHook.m in Sources */,
 				BAFF92551FC7BA3700233BFE /* UserBehaviorTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
