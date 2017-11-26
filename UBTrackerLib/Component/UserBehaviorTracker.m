@@ -40,27 +40,26 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 }
 
 - (BOOL)track_navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item{
-    BOOL isPop = [self track_navigationBar:navigationBar shouldPopItem:item];
     /*UINavigationItemButtonView*/
 //    UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:navigationBar withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
     
     NSString *accessibilityIdentifier = @"返回";
-    
+#warning has problem
 //    for (UIView *subView in [navigationBar subviews]) {
-//        if ([subView isKindOfClass:NSClassFromString(@"UINavigationItemButtonView")]) {
-//            accessibilityIdentifier = [subView accessibilityIdentifier];
+//        if ([subView isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]) {
+//            accessibilityIdentifier = [subView accessibilityLabel];
 //            break;
 //        }
 //    }
-//    
-//    if (!accessibilityIdentifier) {
-//        UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:navigationBar withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
-//        if (targetNode) {
-//            /*发现目标*/
-//            accessibilityIdentifier = [targetNode.nodeSelf accessibilityIdentifier];
-//        }
-//        
-//    }
+
+    if (!accessibilityIdentifier) {
+        UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:navigationBar withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
+        if (targetNode) {
+            /*发现目标*/
+            accessibilityIdentifier = [targetNode.nodeSelf accessibilityIdentifier];
+        }
+        
+    }
     
     if (accessibilityIdentifier.length) {
         
@@ -68,6 +67,8 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
             [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithAccessibilityIdentifier:accessibilityIdentifier];
         });
     }
+    
+    BOOL isPop = [self track_navigationBar:navigationBar shouldPopItem:item];
     
     return isPop;
 }
@@ -392,6 +393,24 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 @end
 
+#pragma mark--NSObject--
+@implementation UIView (TrackHook)
+
+
++ (void)trackHook{
+    trackExchangeMethod([UIView class], @selector(setAccessibilityIdentifier:), @selector(track_setAccessibilityIdentifier:));
+}
+
+- (void)track_setAccessibilityIdentifier:(NSString *)labelStr{
+    [self track_setAccessibilityIdentifier:labelStr];
+    
+    if ([self isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]) {
+        
+    }
+}
+
+@end
+
 #pragma mark--UserBehaviorTracker--
 @implementation UserBehaviorTracker
 
@@ -413,12 +432,10 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 }
 
 - (void)hook{
-
+//    [UIView trackHook];
     /*所有UIControl、UIBarButtonItem*/
     [UIApplication trackHook];
-    
     [UIViewController trackHook];
-    
     /*监控系统自带返回按钮*/
     [UINavigationController trackHook];
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
@@ -430,7 +447,6 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     
 #endif
     
-
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_3
     /*iOS 8.3*/
 #pragma clang diagnostic push
@@ -440,13 +456,9 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 #endif
     
     [UIAlertAction trackHook];
-    
     [UITextField trackHook];
-    
     [UITableView trackHook];
-    
     [UICollectionView trackHook];
-    
 }
 
 - (void)track_applicationDidFinishLaunching{

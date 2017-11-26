@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class UBViewNode;
 @interface UBViewHierarchyDumper : NSObject
 
 + (UBViewNode *)dumpCurrentViewHierarchy;
-+ (UBViewNode *)retrieveNodeWithSender:(id)sender withHeadNode:(UBViewNode *)headNode;
++ (nullable UBViewNode *)retrieveNodeWithSender:(id)sender withHeadNode:(nullable UBViewNode *)headNode;
 
 @end
+
+NS_ASSUME_NONNULL_END
