@@ -41,17 +41,26 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 - (BOOL)track_navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item{
     BOOL isPop = [self track_navigationBar:navigationBar shouldPopItem:item];
+    /*UINavigationItemButtonView*/
+//    UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:navigationBar withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
     
-    NSString *accessibilityIdentifier = [navigationBar accessibilityIdentifier];
+    NSString *accessibilityIdentifier = @"返回";
     
-    if (!accessibilityIdentifier) {
-        UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:navigationBar withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
-        if (targetNode) {
-            /*发现目标*/
-            accessibilityIdentifier = [targetNode.nodeSelf accessibilityIdentifier];
-        }
-        
-    }
+//    for (UIView *subView in [navigationBar subviews]) {
+//        if ([subView isKindOfClass:NSClassFromString(@"UINavigationItemButtonView")]) {
+//            accessibilityIdentifier = [subView accessibilityIdentifier];
+//            break;
+//        }
+//    }
+//    
+//    if (!accessibilityIdentifier) {
+//        UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:navigationBar withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
+//        if (targetNode) {
+//            /*发现目标*/
+//            accessibilityIdentifier = [targetNode.nodeSelf accessibilityIdentifier];
+//        }
+//        
+//    }
     
     if (accessibilityIdentifier.length) {
         
