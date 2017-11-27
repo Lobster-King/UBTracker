@@ -121,6 +121,8 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 + (void)trackHook{
     trackExchangeMethod([UIViewController class], @selector(viewDidAppear:), @selector(track_viewDidAppear:));
+    /*截获storyboard中跳转事件*/
+    trackExchangeMethod([UIViewController class], @selector(shouldPerformSegueWithIdentifier:sender:), @selector(track_shouldPerformSegueWithIdentifier:sender:));
 }
 
 - (void)track_viewDidAppear:(BOOL)animated{
@@ -130,6 +132,28 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
         [UserBehaviorTracker sharedInstance].headNode = [UBViewHierarchyDumper dumpCurrentViewHierarchy];
     });
     
+}
+
+- (BOOL)track_shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    
+    NSString *accessibilityIdentifier = [sender accessibilityIdentifier];
+    
+    if (!accessibilityIdentifier) {
+        UBViewNode *targetNode = [UBViewHierarchyDumper retrieveNodeWithSender:sender withHeadNode:[UserBehaviorTracker sharedInstance].headNode];
+        if (targetNode) {
+            /*发现目标*/
+            accessibilityIdentifier = [targetNode.nodeSelf accessibilityIdentifier];
+        }
+        
+    }
+    
+    if (accessibilityIdentifier.length) {
+        dispatch_async([UserBehaviorTracker sharedInstance].codeMakerQueue, ^{
+            [[UserBehaviorTracker sharedInstance].codeMaker recordTapActionWithAccessibilityIdentifier:accessibilityIdentifier];
+        });
+    }
+
+    return [self track_shouldPerformSegueWithIdentifier:identifier sender:sender];
 }
 
 @end
