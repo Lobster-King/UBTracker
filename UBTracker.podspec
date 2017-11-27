@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.platform = :ios 
   s.source_files = 'UBTrackerLib/**/*.{c,h,hh,m,mm,plist}'
   s.public_header_files = 'UBTrackerLib/**/*.h'
-  s.ios.deployment_target = '7.0'
+  s.ios.deployment_target = '8.0'
   s.ios.frameworks = 'UIKit', 'Foundation'
   s.requires_arc = true
 end
