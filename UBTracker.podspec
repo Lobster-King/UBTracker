@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.author   = { 'Lobster-King' => 'zhiwei.geek@gmail.com' }
   s.source   = { :git => 'https://github.com/Lobster-King/UBTracker.git'}
   s.platform = :ios 
-  s.source_files = 'UBTrackerLib/**/*.{c,h,hh,m,mm,plist}'
+  s.source_files = 'UBTracker/**/*.{c,h,hh,m,mm,plist}'
   s.public_header_files = 'UBTrackerLib/**/*.h'
   s.ios.deployment_target = '8.0'
   s.ios.frameworks = 'UIKit', 'Foundation'
