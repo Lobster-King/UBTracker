@@ -16,7 +16,7 @@
 @interface UserBehaviorTracker ()
 
 @property (nonatomic, strong) UBViewNode *headNode;/*current view head node*/
-@property (nonatomic, strong) NSMutableSet<NSString*>*accessIdSet;/*存放事件accessId*/
+@property (nonatomic, strong) NSMutableArray<NSString*>*accessIdSet;/*存放事件accessId*/
 
 @end
 
@@ -99,7 +99,8 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     
     if (accessibilityIdentifier.length) {
         
-        if ([[UserBehaviorTracker sharedInstance].accessIdSet containsObject:accessibilityIdentifier]) {
+#warning has problem 最后一个元素存在则return，有问题（比如我要测试一个按钮连续点击的情况）
+        if ([[[UserBehaviorTracker sharedInstance].accessIdSet lastObject]isEqualToString: accessibilityIdentifier]) {
             return [self track_sendAction:action to:target from:sender forEvent:event];
         }
         
@@ -483,9 +484,9 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
     return _codeMaker;
 }
 
-- (NSMutableSet *)accessIdSet{
+- (NSMutableArray *)accessIdSet{
     if (!_accessIdSet) {
-        _accessIdSet = [NSMutableSet set];
+        _accessIdSet = [NSMutableArray array];
     }
     return _accessIdSet;
 }
