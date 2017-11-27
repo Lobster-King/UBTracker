@@ -12,14 +12,18 @@
 @implementation TrackingCodeMakerRubyPlugin
 
 - (void)preBoilerplateCode{
-    NSString *code = [NSString stringWithFormat:@"\n#User Behavior Tracking Demo.Rquire Appium Version(%@)#\n\nrequire 'rubygems'\n\
-require 'appium_lib'\
-\n\caps = {}\n\
+    NSString *code = [NSString stringWithFormat:@"\n\
+#User Behavior Tracking Demo.Rquire Appium Version(%@)#\n\
+\n\
+require 'rubygems'\n\
+require 'appium_lib'\n\
+caps = {}\n\
 caps[\"platformName\"] = \"%@\"\n\
 caps[\"platformVersion\"] = \"%@\"\n\
 caps[\"deviceName\"] = \"%@\"\n\
 caps[\"automationName\"] = \"%@\"\n\
-caps[\"app\"] = \"%@\"\n ", self.capabilities.appiumVersion,self.capabilities.platformName,self.capabilities.platformVersion,self.capabilities.deviceName,self.capabilities.automationName,self.capabilities.app];
+caps[\"app\"] = \"%@\"\n ",
+self.capabilities.appiumVersion,self.capabilities.platformName,self.capabilities.platformVersion,self.capabilities.deviceName,self.capabilities.automationName,self.capabilities.app];
     
     code = [code stringByAppendingFormat:@"\n\
 \n\
