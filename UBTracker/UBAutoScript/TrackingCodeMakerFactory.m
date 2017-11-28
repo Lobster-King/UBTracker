@@ -10,6 +10,7 @@
 #import "TrackingCapabilities.h"
 #import "TrackingCodeMakerPlugin.h"
 #import "TrackingCodeMakerRubyPlugin.h"
+#import <UIKit/UIKit.h>
 
 @implementation TrackingCodeMakerFactory
 
@@ -31,9 +32,10 @@ static inline TrackingCodeMakerPlugin *coderMakerPluginFactory(TrackingCapabilit
     TrackingCapabilities *capabilities = [TrackingCapabilities new];
     capabilities.appiumVersion = @"1.7.1";
     capabilities.platformName  = @"iOS";
-    capabilities.platformVersion = @"9.3";
+    capabilities.platformVersion = [UIDevice currentDevice].systemVersion;
     capabilities.deviceName    = @"iPhone 6s";
-    capabilities.app           = @"/Users/lobster/Desktop/UBTrackerDemo.app";
+    NSString *bundleName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+    capabilities.app           = [NSString stringWithFormat:@"/Users/lobster/Desktop/%@.app",bundleName];
     capabilities.serverAddress = @"127.0.0.1";
     capabilities.serverPort    = @"4723";
     capabilities.appiumLanguage= @"Ruby";
