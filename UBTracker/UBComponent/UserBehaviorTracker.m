@@ -127,7 +127,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 
 - (void)track_viewDidAppear:(BOOL)animated{
     [self track_viewDidAppear:animated];
-    /*dump current view*/
+#warning we should update ui in main thread.
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [UserBehaviorTracker sharedInstance].headNode = [UBViewHierarchyDumper dumpCurrentViewHierarchy];
     });
