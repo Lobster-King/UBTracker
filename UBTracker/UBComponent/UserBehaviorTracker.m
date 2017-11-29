@@ -398,6 +398,7 @@ void trackExchangeMethod(Class aClass, SEL oldSEL, SEL newSEL)
 }
 
 - (void)track_tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+#warning has problem on iOS 11
     [self track_tableView:tableView didSelectRowAtIndexPath:indexPath];
     id sender = [tableView cellForRowAtIndexPath:indexPath];
     NSString *accessibilityIdentifier = [sender accessibilityIdentifier];
