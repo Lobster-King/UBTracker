@@ -21,6 +21,6 @@
 @property (nonatomic, assign) NSInteger interKeyDelay;/*click delay*/
 @property (nonatomic, copy) NSString *showIOSLog;/*false default*/
 @property (nonatomic, copy) NSString *waitTime;/*find element timeout,10s default*/
-@property (nonatomic, copy) NSString *automationName;/*XCUITest*/
+@property (nonatomic, copy) NSString *automationName;/*XCUITest default*/
 
 @end
